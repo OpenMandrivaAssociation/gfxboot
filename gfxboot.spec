@@ -1,19 +1,22 @@
-%define name gfxboot
-%define version 3.3.18
-%define release %mkrel 1
+%define name	gfxboot
+%define version	3.3.18
+%define release	%mkrel 2
 
-Summary: Tools to create graphical boot logos
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: %{name}-%{version}.tar.bz2
-Source1: SuSE.tar.bz2
-Patch0: gfxboot-3.3.18-mdv.patch
-License: GPL
-Group: System/Kernel and hardware
-Url: http://en.opensuse.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: nasm xmlto libx11-devel freetype2-devel
+Summary:	Tools to create graphical boot logos
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	%{name}-%{version}.tar.bz2
+Source1:	SuSE.tar.bz2
+Patch0:		gfxboot-3.3.18-mdv.patch
+License:	GPL+
+Group:		System/Kernel and hardware
+URL:		http://en.opensuse.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	nasm
+BuildRequires:	xmlto
+BuildRequires:	libx11-devel
+BuildRequires:	freetype2-devel
 
 %description
 gfxboot provides tools to create graphical boot logos, for grub, lilo
@@ -45,5 +48,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/bin/
 %{_datadir}/%{name}/themes/
-
 
