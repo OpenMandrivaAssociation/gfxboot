@@ -12,7 +12,6 @@ Patch0:		gfxboot-3.3.18-mdv.patch
 License:	GPL+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	nasm
 BuildRequires:	xmlto
 BuildRequires:	libx11-devel
