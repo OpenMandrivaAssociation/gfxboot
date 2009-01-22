@@ -1,15 +1,14 @@
 %define name	gfxboot
-%define version	3.3.18
-%define release	%mkrel 4
+%define version	4.1.19
+%define release	%mkrel 1
 
 Summary:	Tools to create graphical boot logos
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	%{name}-%{version}.tar.bz2
-Source1:	SuSE.tar.bz2
 Patch0:		gfxboot-3.3.18-mdv.patch
-License:	GPL+
+License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -24,28 +23,45 @@ and syslinux. It supports arch-specific boot menus, advanced help
 menus, multiple keymaps, animated images, and more graphical pretty
 things.
 
+%package        devel
+License:        GPLv2+
+Summary:        Tools for creating a graphical boot logo
+Group:          System/Kernel and hardware
+
+%description devel
+Here you find the necessary programs to create your own graphical boot
+logo. The logo can be used with grub, lilo or syslinux.
+
 %prep
-%setup -q -a 1
+%setup -q
 %patch0 -p1 -b .mdv
 
 %build
-%make PRODUCT="Mandriva Linux %mandriva_release"
+%make
 %make doc
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
+%makeinstall_std THEMES=""
+install -d -m 755 %{buildroot}%{_mandir}/man8
+install -m 644 doc/gfxboot.8 %{buildroot}%{_mandir}/man8
+
+# gfxboot-compile is used to build as non-root, move it out of /usr/sbin
+install -d %{buildroot}%{_bindir}
+mv %{buildroot}%{_sbindir}/gfxboot-compile %{buildroot}%{_bindir}/gfxboot-compile
+mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc doc/gfxboot.html doc/gfxboot.txt
-%{_sbindir}/mkblfont
-%{_sbindir}/help2txt
-%{_sbindir}/mkbootmsg
-%dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/bin/
-%{_datadir}/%{name}/themes/
+%{_sbindir}/gfxboot
+%{_mandir}/man8/*
 
+%files devel
+%defattr(-,root,root)
+%{_bindir}/gfxboot-compile
+%{_bindir}/gfxboot-font
+%doc doc/gfxboot.html
+%doc doc/gfxboot.txt
