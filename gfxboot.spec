@@ -1,6 +1,6 @@
 %define name	gfxboot
 %define version	4.1.19
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 Summary:	Tools to create graphical boot logos
 Name:		%{name}
@@ -27,6 +27,7 @@ things.
 License:        GPLv2+
 Summary:        Tools for creating a graphical boot logo
 Group:          System/Kernel and hardware
+Requires:	gfxboot = %version-%release
 
 %description devel
 Here you find the necessary programs to create your own graphical boot
