@@ -49,6 +49,10 @@ install -m 644 doc/gfxboot.8 %{buildroot}%{_mandir}/man8
 
 # gfxboot-compile is used to build as non-root, move it out of /usr/sbin
 install -d %{buildroot}%{_bindir}
+# add adddir and keymapchars since they are used in mandriva-gfxboot-theme
+# build system
+cp %{_builddir}/%{name}-%{version}/bin/adddir %{buildroot}%{_bindir}/gfxboot-adddir
+cp %{_builddir}/%{name}-%{version}/bin/keymapchars %{buildroot}%{_bindir}/gfxboot-keymapchars
 mv %{buildroot}%{_sbindir}/gfxboot-compile %{buildroot}%{_bindir}/gfxboot-compile
 mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 
@@ -64,5 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %{_bindir}/gfxboot-compile
 %{_bindir}/gfxboot-font
+%{_bindir}/gfxboot-adddir
+%{_bindir}/gfxboot-keymapchars
 %doc doc/gfxboot.html
 %doc doc/gfxboot.txt
