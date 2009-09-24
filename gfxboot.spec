@@ -1,6 +1,6 @@
 %define name	gfxboot
 %define version	4.1.19
-%define release	%mkrel 3
+%define release	%mkrel 4
 
 Summary:	Tools to create graphical boot logos
 Name:		%{name}
@@ -17,6 +17,7 @@ BuildRequires:	xmlto
 BuildRequires:  docbook-dtd412-xml
 BuildRequires:	libx11-devel
 BuildRequires:	freetype2-devel
+ExclusiveArch:	%{ix86} x86_64
 
 %description
 gfxboot provides tools to create graphical boot logos, for grub, lilo
