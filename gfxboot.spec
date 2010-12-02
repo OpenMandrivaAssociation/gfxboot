@@ -1,6 +1,6 @@
 %define name	gfxboot
 %define version	4.1.19
-%define release	%mkrel 5
+%define release	%mkrel 6
 
 Summary:	Tools to create graphical boot logos
 Name:		%{name}
