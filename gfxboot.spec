@@ -8,6 +8,7 @@ Version:	%{version}
 Release:	%{release}
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		gfxboot-3.3.18-mdv.patch
+Patch1:		gfxboot-4.1.19-link.patch
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/
@@ -38,9 +39,10 @@ logo. The logo can be used with grub, lilo or syslinux.
 %prep
 %setup -q
 %patch0 -p1 -b .mdv
+%patch1 -p0 -b .link
 
 %build
-%make
+%make CC="cc %optflags %ldflags"
 %make doc
 
 %install
