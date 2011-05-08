@@ -15,6 +15,7 @@ URL:		http://en.opensuse.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	nasm
 BuildRequires:	xmlto
+BuildRequires:	lynx
 BuildRequires:  docbook-dtd412-xml
 BuildRequires:	libx11-devel
 BuildRequires:	freetype2-devel
