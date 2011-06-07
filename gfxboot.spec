@@ -1,6 +1,6 @@
 %define name	gfxboot
 %define version	4.1.19
-%define release	%mkrel 7
+%define release	%mkrel 8
 
 Summary:	Tools to create graphical boot logos
 Name:		%{name}
@@ -9,6 +9,7 @@ Release:	%{release}
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		gfxboot-3.3.18-mdv.patch
 Patch1:		gfxboot-4.1.19-link.patch
+Patch2:		gfxboot-4.1.19-preview-mandriva-defaults.patch
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/
@@ -32,6 +33,10 @@ License:        GPLv2+
 Summary:        Tools for creating a graphical boot logo
 Group:          System/Kernel and hardware
 Requires:	gfxboot = %version-%release
+%if %mdkversion >= 201100
+Requires:	master-boot-code
+%endif
+Requires:	qemu
 
 %description devel
 Here you find the necessary programs to create your own graphical boot
@@ -41,6 +46,7 @@ logo. The logo can be used with grub, lilo or syslinux.
 %setup -q
 %patch0 -p1 -b .mdv
 %patch1 -p0 -b .link
+%patch2 -p1
 
 %build
 %make CC="cc %optflags %ldflags"
