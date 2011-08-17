@@ -1,15 +1,8 @@
-%define name	gfxboot
-%define version	4.1.19
-%define release	%mkrel 8
-
+Name:		gfxboot
+Version:	4.3.8
+Release:	1
 Summary:	Tools to create graphical boot logos
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
 Source0:	%{name}-%{version}.tar.bz2
-Patch0:		gfxboot-3.3.18-mdv.patch
-Patch1:		gfxboot-4.1.19-link.patch
-Patch2:		gfxboot-4.1.19-preview-mandriva-defaults.patch
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/
@@ -21,6 +14,8 @@ BuildRequires:  docbook-dtd412-xml
 BuildRequires:	libx11-devel
 BuildRequires:	freetype2-devel
 ExclusiveArch:	%{ix86} x86_64
+Patch0:		gfxboot-4.3.8-mandriva.patch
+Patch1:		gfxboot-4.3.8-link.patch
 
 %description
 gfxboot provides tools to create graphical boot logos, for grub, lilo
@@ -44,9 +39,8 @@ logo. The logo can be used with grub, lilo or syslinux.
 
 %prep
 %setup -q
-%patch0 -p1 -b .mdv
-%patch1 -p0 -b .link
-%patch2 -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 %make CC="cc %optflags %ldflags"
@@ -73,6 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{_sbindir}/gfxboot
+%{_sbindir}/gfxtest
 %{_mandir}/man8/*
 
 %files devel
