@@ -47,7 +47,7 @@ logo. The logo can be used with grub, lilo or syslinux.
 %make doc
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std THEMES=""
 install -d -m 755 %{buildroot}%{_mandir}/man8
 install -m 644 doc/gfxboot.8 %{buildroot}%{_mandir}/man8
@@ -62,7 +62,7 @@ mv %{buildroot}%{_sbindir}/gfxboot-compile %{buildroot}%{_bindir}/gfxboot-compil
 mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
