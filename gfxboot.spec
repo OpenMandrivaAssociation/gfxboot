@@ -1,6 +1,6 @@
 Name:		gfxboot
 Version:	4.3.8
-Release:	2
+Release:	3
 Summary:	Tools to create graphical boot logos
 Source0:	%{name}-%{version}.tar.bz2
 License:	GPLv2+
