@@ -6,7 +6,6 @@ Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/Gfxboot
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	nasm
 BuildRequires:	xmlto
 BuildRequires:	lynx
@@ -27,8 +26,8 @@ things.
 License:        GPLv2+
 Summary:        Tools for creating a graphical boot logo
 Group:          System/Kernel and hardware
-Requires:	gfxboot = %version-%release
-%if %mdkversion >= 201100
+Requires:	gfxboot = %{EVRD}
+%if "%{distepoch}" >= "2011.0"
 Requires:	master-boot-code
 %endif
 Requires:	qemu
@@ -43,38 +42,29 @@ logo. The logo can be used with grub, lilo or syslinux.
 %patch1 -p1
 
 %build
-%make CC="cc %optflags %ldflags"
+%make CC="gcc %{optflags} %{ldflags}"
 %make doc
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std THEMES=""
-install -d -m 755 %{buildroot}%{_mandir}/man8
-install -m 644 doc/gfxboot.8 %{buildroot}%{_mandir}/man8
+install -m644 doc/gfxboot.8 -D %{buildroot}%{_mandir}/man8/gfxboot.8
 
-# gfxboot-compile is used to build as non-root, move it out of /usr/sbin
-install -d %{buildroot}%{_bindir}
 # add adddir and keymapchars since they are used in mandriva-gfxboot-theme
 # build system
-cp %{_builddir}/%{name}-%{version}/bin/adddir %{buildroot}%{_bindir}/gfxboot-adddir
-cp %{_builddir}/%{name}-%{version}/bin/keymapchars %{buildroot}%{_bindir}/gfxboot-keymapchars
+install -m755 bin/adddir -D %{buildroot}%{_bindir}/gfxboot-adddir
+install -m755 bin/keymapchars -D %{buildroot}%{_bindir}/gfxboot-keymapchars
+# gfxboot-compile is used to build as non-root, move it out of /usr/sbin
 mv %{buildroot}%{_sbindir}/gfxboot-compile %{buildroot}%{_bindir}/gfxboot-compile
 mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %{_sbindir}/gfxboot
 %{_sbindir}/gfxtest
 %{_mandir}/man8/*
 
 %files devel
-%defattr(-,root,root)
+%doc doc/gfxboot.html doc/gfxboot.txt
 %{_bindir}/gfxboot-compile
 %{_bindir}/gfxboot-font
 %{_bindir}/gfxboot-adddir
 %{_bindir}/gfxboot-keymapchars
-%doc doc/gfxboot.html
-%doc doc/gfxboot.txt
