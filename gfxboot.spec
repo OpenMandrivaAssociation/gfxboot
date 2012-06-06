@@ -5,7 +5,7 @@ Summary:	Tools to create graphical boot logos
 Source0:	%{name}-%{version}.tar.bz2
 License:	GPLv2+
 Group:		System/Kernel and hardware
-URL:		http://en.opensuse.org/
+URL:		http://en.opensuse.org/Gfxboot
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	nasm
 BuildRequires:	xmlto
