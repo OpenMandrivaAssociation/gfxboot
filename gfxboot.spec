@@ -9,7 +9,7 @@ URL:		http://en.opensuse.org/Gfxboot
 BuildRequires:	nasm
 BuildRequires:	xmlto
 BuildRequires:	lynx
-BuildRequires:  docbook-dtd412-xml
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(freetype2)
 ExclusiveArch:	%{ix86} x86_64
@@ -22,10 +22,10 @@ and syslinux. It supports arch-specific boot menus, advanced help
 menus, multiple keymaps, animated images, and more graphical pretty
 things.
 
-%package        devel
-License:        GPLv2+
-Summary:        Tools for creating a graphical boot logo
-Group:          System/Kernel and hardware
+%package	devel
+License:	GPLv2+
+Summary:	Tools for creating a graphical boot logo
+Group:		System/Kernel and hardware
 Requires:	gfxboot = %{EVRD}
 %if "%{distepoch}" >= "2011.0"
 Requires:	master-boot-code
