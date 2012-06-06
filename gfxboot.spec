@@ -1,8 +1,8 @@
 Name:		gfxboot
-Version:	4.3.8
-Release:	3
+Version:	4.5.0
+Release:	1
 Summary:	Tools to create graphical boot logos
-Source0:	%{name}-%{version}.tar.bz2
+Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/Gfxboot
