@@ -10,8 +10,8 @@ BuildRequires:	nasm
 BuildRequires:	xmlto
 BuildRequires:	lynx
 BuildRequires:  docbook-dtd412-xml
-BuildRequires:	libx11-devel
-BuildRequires:	freetype2-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(freetype2)
 ExclusiveArch:	%{ix86} x86_64
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
