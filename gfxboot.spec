@@ -42,7 +42,7 @@ logo. The logo can be used with grub, lilo or syslinux.
 %patch1 -p1
 
 %build
-%make CC="gcc %{optflags} %{ldflags}"
+%make CFLAGS="%{optflags} %{ldflags}"
 %make doc
 
 %install
