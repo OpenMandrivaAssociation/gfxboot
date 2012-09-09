@@ -1,6 +1,6 @@
 Name:		gfxboot
 Version:	4.5.0
-Release:	1
+Release:	2
 Summary:	Tools to create graphical boot logos
 # http://gitorious.org/gfxboot/
 Source0:	%{name}-%{version}.tar.xz
@@ -16,6 +16,7 @@ BuildRequires:	pkgconfig(freetype2)
 ExclusiveArch:	%{ix86} x86_64
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
+Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
 
 %description
 gfxboot provides tools to create graphical boot logos, for grub, lilo
@@ -41,6 +42,7 @@ logo. The logo can be used with grub, lilo or syslinux.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %make CFLAGS="%{optflags} %{ldflags}"
