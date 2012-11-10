@@ -1,0 +1,11 @@
+--- gfxboot-4.3.8/Makefile.orig	2011-08-17 15:12:02.548478671 -0300
++++ gfxboot-4.3.8/Makefile	2011-08-17 15:12:23.422478675 -0300
+@@ -17,7 +17,7 @@ changelog: $(GITDEPS)
+ 	$(GIT2LOG) --changelog changelog
+ 
+ gfxboot-font: gfxboot-font.c
+-	$(CC) $(CFLAGS) -I /usr/include/freetype2 -lfreetype $< -o $@
++	$(CC) $(CFLAGS) -I /usr/include/freetype2 $< -o $@ -lfreetype
+ 
+ gfxboot-compile: gfxboot-compile.c vocabulary.h bincode.h
+ 	$(CC) $(CFLAGS) $< -o $@
