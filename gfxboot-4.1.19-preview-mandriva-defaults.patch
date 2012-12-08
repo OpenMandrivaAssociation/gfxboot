@@ -1,29 +1,17 @@
---- gfxboot-4.3.8/bin/help2txt.orig	2011-10-25 15:43:56.304202803 -0200
-+++ gfxboot-4.3.8/bin/help2txt	2011-10-25 15:44:25.713345966 -0200
-@@ -12,7 +12,7 @@ sub body_start;
- sub find_tag;
- sub nospaces;
- 
--$opt_product = "openSUSE";
-+$opt_product = "Mandriva Linux";
- 
- %help_key_rename = (
-   'F2' => 'F3',
---- gfxboot-4.3.8/gfxboot.orig	2011-10-25 15:44:03.848239523 -0200
-+++ gfxboot-4.3.8/gfxboot	2011-10-25 15:45:01.503520246 -0200
-@@ -916,11 +916,17 @@ sub create_vmdk;
+--- gfxboot-4.1.19/gfxboot.orig	2011-06-08 15:10:02.311932354 -0300
++++ gfxboot-4.1.19/gfxboot	2011-06-08 15:09:08.619932380 -0300
+@@ -909,11 +909,17 @@ sub unpack_rpm;
  
  my $opt_verbose = 0;
  my $opt_preview = 0;
 -my $opt_gfxarchive = "/boot/message";
 -my $opt_bootloader;
--my $opt_vm = "qemu64";
-++my $opt_gfxarchive = "/usr/share/gfxboot/themes/Mandriva/boot/message";
-++my $opt_bootloader = "grub";
-+my $opt_vm = "qemu";
++my $opt_gfxarchive = "/usr/share/gfxboot/themes/Mandriva/boot/message";
++my $opt_bootloader = "grub";
+ my $opt_vm = "qemu";
  my $opt_savetemp = 0;
  my $opt_grub = "/";
-+my $arch_vendor = `rpm --eval '\%_arch-\%_vendor'`;
++my $arch_vendor = `rpm --eval '\%_arch-\%_real_vendor'`;
 +chomp($arch_vendor);
 +my $opt_grub_fat_stage1_5 = "$opt_grub/lib/grub/$arch_vendor/fat_stage1_5";
 +my $opt_grub_stage1 = "$opt_grub/lib/grub/$arch_vendor/stage1";
@@ -32,8 +20,8 @@
  my $opt_lilo = "/";
  my $opt_syslinux = "/";
  my $opt_password = undef;
-@@ -987,7 +993,7 @@ my %vm_list = (
- my @vm_order = qw ( qemu64 qemu32 qemu qemu-kvm vbox vbox64 vboxsdl vmplayer vmware bochs );
+@@ -970,7 +976,7 @@ my %vm_list = (
+ my @vm_order = qw ( qemu vbox vboxsdl vmplayer vmware qemu-i386 qemu-x86_64 bochs );
  
  my %bl_list = (
 -  grub     => '/usr/sbin/grub',
@@ -41,7 +29,7 @@
    lilo     => '/sbin/lilo',
    isolinux => '/usr/share/syslinux/isolinux.bin',
    syslinux => '/usr/bin/syslinux',
-@@ -1010,6 +1016,7 @@ GetOptions(
+@@ -991,6 +997,7 @@ GetOptions(
    'bootloader|b=s'      => \$opt_bootloader,
    'vm|m=s'              => \$opt_vm,
    'grub=s'              => \$opt_grub,
@@ -49,7 +37,7 @@
    'lilo=s'              => \$opt_lilo,
    'isolinux=s'          => \$opt_syslinux,
    'syslinux=s'          => \$opt_syslinux,
-@@ -1138,8 +1145,8 @@ if(@opt_extractfiles) {
+@@ -1108,8 +1115,8 @@ if(@opt_extractfiles) {
  }
  
  if($opt_theme) {
@@ -60,15 +48,15 @@
    die "$opt_theme: no such theme\n" unless -f $theme_archive;
    $write_archive = 1;
    ( $work_dir, $work_archive_name ) = unpack_archive $theme_archive unless $work_dir;
-@@ -1323,6 +1330,7 @@ Preview/test gfxboot setup:
-                                 Add files to test directory.
-       --test-rm-files FILE1 FILE2 ...
-                                 Delete files from test directory.
+@@ -1279,6 +1286,7 @@ Preview/test gfxboot setup:
+       --disk                    Create harddisk image for preview.
+       --floppy                  Create floppy image for preview.
+       --save-image FILE         Copy preview image to FILE.
 +      --grub-menu FILE          Use specified grub menu.lst file.
  
  Adding/removing files from gfxboot archive:
  
-@@ -1503,7 +1511,7 @@ sub read_grub_menu
+@@ -1439,7 +1447,7 @@ sub read_grub_menu
    local $_;
    my ($menu, $default);
  
@@ -77,7 +65,7 @@
  
    while(<ML>) {
      push @{$menu->{list}}, $1 if /^\s*title\s+(.+?)\s*$/;
-@@ -1581,7 +1589,15 @@ sub prepare_grub
+@@ -1517,7 +1525,15 @@ sub prepare_grub
  
    die "Can't setup grub on $opt_media.\n" if $opt_media && $opt_media ne 'disk';
  
@@ -94,7 +82,7 @@
  
    die "error: grub not found\n" unless -x "$opt_grub/$bl_list{grub}";
  
-@@ -1600,7 +1616,7 @@ sub prepare_grub
+@@ -1536,7 +1552,7 @@ sub prepare_grub
    mkdir "$dst/boot", 0755;
    mkdir "$dst/boot/grub", 0755;
  
@@ -103,7 +91,7 @@
    system "cp $file $dst/boot/message";
  
    system "cp /boot/vmlinuz $dst/boot" if -f "/boot/vmlinuz";
-@@ -1614,7 +1630,7 @@ sub prepare_grub
+@@ -1550,7 +1566,7 @@ sub prepare_grub
    print F "default $menu->{default}\ntimeout 20\ngfxmenu (hd0,0)/boot/message\n\n";
  
    for (@{$menu->{list}}) {
@@ -112,7 +100,7 @@
    }
    close F;
  
-@@ -1643,7 +1659,7 @@ sub prepare_grub
+@@ -1570,7 +1586,7 @@ sub prepare_grub
  
    my $log = $gfxboot_tmp->file('grub.log');
  
@@ -121,23 +109,3 @@
    print F "setup --prefix=/boot/grub (hd0,0) (hd0,0)\n";
    close F;
  
-@@ -2126,7 +2142,7 @@ sub run_qemu
-   my $vm_env = shift;
-   my $q = $vm_list{$opt_vm}{cmd};
- 
--  $q = "MALLOC_CHECK_=0 $q -enable-kvm" if -d "/sys/devices/system/kvm";
-+  #$q = "MALLOC_CHECK_=0 $q -enable-kvm" if -d "/sys/devices/system/kvm";
- 
-   $q .= " -m 512";
- 
---- gfxboot-4.3.8/gfxtest.orig	2011-10-25 15:44:14.545291597 -0200
-+++ gfxboot-4.3.8/gfxtest	2011-10-25 15:44:25.714345971 -0200
-@@ -143,7 +143,7 @@ fi
- 
- gfxboot_x_args="$args $@"
- 
--opt_theme=${opt_theme:-openSUSE}
-+opt_theme=${opt_theme:-Mandriva}
- if [ ! -d "themes/$opt_theme" ] ; then
-   echo "no such theme: $opt_theme"
-   exit 1

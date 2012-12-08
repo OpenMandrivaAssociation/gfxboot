@@ -1,0 +1,11 @@
+--- gfxboot-3.3.18/bin/help2txt.pix	2006-12-05 11:08:10.000000000 +0100
++++ gfxboot-3.3.18/bin/help2txt	2006-12-05 11:09:19.000000000 +0100
+@@ -12,7 +12,7 @@
+ sub find_tag;
+ sub nospaces;
+ 
+-$opt_product = "openSUSE";
++$opt_product = "Mandriva Linux";
+ 
+ %help_key_rename = (
+   'F2' => 'F3',
