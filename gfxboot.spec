@@ -1,7 +1,7 @@
 Summary:	Tools to create graphical boot logos
 Name:		gfxboot
 Version:	4.1.19
-Release:	9
+Release:	10
 Source0:	%{name}-%{version}.tar.bz2
 Patch0:		gfxboot-3.3.18-mdv.patch
 Patch1:		gfxboot-4.1.19-link.patch
