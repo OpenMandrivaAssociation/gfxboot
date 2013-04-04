@@ -7,12 +7,12 @@ Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://en.opensuse.org/Gfxboot
-BuildRequires:	nasm
-BuildRequires:	xmlto
-BuildRequires:	lynx
-BuildRequires:	docbook-dtd412-xml
-BuildRequires:	pkgconfig(x11)
-BuildRequires:	pkgconfig(freetype2)
+#BuildRequires:	nasm
+#BuildRequires:	xmlto
+#BuildRequires:	lynx
+#BuildRequires:	docbook-dtd412-xml
+#BuildRequires:	pkgconfig(x11)
+#BuildRequires:	pkgconfig(freetype2)
 ExclusiveArch:	%{ix86} x86_64
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
@@ -45,6 +45,9 @@ logo. The logo can be used with grub, lilo or syslinux.
 %patch2 -p1
 
 %build
+# (tpg) don't generate changelog from upstream git
+sed -i -e 's/all:.changelog/all:./g' Makefile
+
 %make CFLAGS="%{optflags} %{ldflags}"
 %make doc
 
