@@ -1,22 +1,23 @@
+Summary:	Tools to create graphical boot logos
 Name:		gfxboot
 Version:	4.5.1
 Release:	1
-Summary:	Tools to create graphical boot logos
 # http://gitorious.org/gfxboot/
-Source0:	%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		System/Kernel and hardware
-URL:		http://en.opensuse.org/Gfxboot
-BuildRequires:	nasm
-BuildRequires:	xmlto
-BuildRequires:	lynx
-BuildRequires:	docbook-dtd412-xml
-BuildRequires:	pkgconfig(x11)
-BuildRequires:	pkgconfig(freetype2)
-ExclusiveArch:	%{ix86} x86_64
+Url:		http://en.opensuse.org/Gfxboot
+Source0:	%{name}-%{version}.tar.xz
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
 Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
+ExclusiveArch:	%{ix86} x86_64
+
+BuildRequires:	docbook-dtd412-xml
+BuildRequires:	lynx
+BuildRequires:	nasm
+BuildRequires:	xmlto
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(freetype2)
 
 %description
 gfxboot provides tools to create graphical boot logos, for grub, lilo
@@ -40,9 +41,7 @@ logo. The logo can be used with grub, lilo or syslinux.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%apply_patches
 
 %build
 # (tpg) don't generate changelog from upstream git
@@ -74,3 +73,4 @@ mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 %{_bindir}/gfxboot-font
 %{_bindir}/gfxboot-adddir
 %{_bindir}/gfxboot-keymapchars
+
