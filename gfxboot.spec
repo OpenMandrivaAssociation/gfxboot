@@ -1,7 +1,7 @@
 Summary:	Tools to create graphical boot logos
 Name:		gfxboot
 Version:	4.5.1
-Release:	4
+Release:	5
 # http://gitorious.org/gfxboot/
 License:	GPLv2+
 Group:		System/Kernel and hardware
