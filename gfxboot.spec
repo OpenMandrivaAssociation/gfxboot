@@ -1,7 +1,7 @@
 Summary:	Tools to create graphical boot logos
 Name:		gfxboot
 Version:	4.5.1
-Release:	7
+Release:	8
 # http://gitorious.org/gfxboot/
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -30,9 +30,6 @@ License:	GPLv2+
 Summary:	Tools for creating a graphical boot logo
 Group:		System/Kernel and hardware
 Requires:	gfxboot = %{EVRD}
-%if "%{distepoch}" >= "2011.0"
-Requires:	master-boot-code
-%endif
 Requires:	qemu
 
 %description devel
