@@ -38,7 +38,7 @@ logo. The logo can be used with grub, lilo or syslinux.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 # (tpg) don't generate changelog from upstream git
