@@ -7,10 +7,10 @@ License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://en.opensuse.org/Gfxboot
 Source0:	https://github.com/openSUSE/gfxboot/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
-Patch0:		gfxboot-4.3.8-mandriva.patch
-Patch1:		gfxboot-4.3.8-link.patch
-Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
-ExclusiveArch:	%{ix86} x86_64
+#Patch0:		gfxboot-4.3.8-mandriva.patch
+#Patch1:		gfxboot-4.3.8-link.patch
+#Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
+#ExclusiveArch:	%{ix86} x86_64
 
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	lynx
