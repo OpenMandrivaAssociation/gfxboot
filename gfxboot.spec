@@ -60,8 +60,8 @@ install -m755 bin/keymapchars -D %{buildroot}%{_bindir}/gfxboot-keymapchars
 #mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 
 %files
-%{_sbindir}/gfxboot
-%{_sbindir}/gfxtest
+#{_sbindir}/gfxboot
+#{_sbindir}/gfxtest
 %{_mandir}/man8/*
 
 %files devel
