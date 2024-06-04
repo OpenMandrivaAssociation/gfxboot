@@ -1,12 +1,12 @@
 Summary:	Tools to create graphical boot logos
 Name:		gfxboot
-Version:	4.5.1
-Release:	12
+Version:	4.5.93
+Release:	1
 # http://gitorious.org/gfxboot/
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://en.opensuse.org/Gfxboot
-Source0:	%{name}-%{version}.tar.xz
+Source0:	https://github.com/openSUSE/gfxboot/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
 Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
