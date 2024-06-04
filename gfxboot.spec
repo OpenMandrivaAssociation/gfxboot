@@ -56,7 +56,7 @@ install -m644 doc/gfxboot.8 -D %{buildroot}%{_mandir}/man8/gfxboot.8
 install -m755 bin/adddir -D %{buildroot}%{_bindir}/gfxboot-adddir
 install -m755 bin/keymapchars -D %{buildroot}%{_bindir}/gfxboot-keymapchars
 # gfxboot-compile is used to build as non-root, move it out of /usr/sbin
-mv %{buildroot}%{_sbindir}/gfxboot-compile %{buildroot}%{_bindir}/gfxboot-compile
+#mv %{buildroot}%{_sbindir}/gfxboot-compile %{buildroot}%{_bindir}/gfxboot-compile
 mv %{buildroot}%{_sbindir}/gfxboot-font %{buildroot}%{_bindir}/gfxboot-font
 
 %files
