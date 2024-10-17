@@ -5,7 +5,7 @@ Release:	12
 # http://gitorious.org/gfxboot/
 License:	GPLv2+
 Group:		System/Kernel and hardware
-Url:		http://en.opensuse.org/Gfxboot
+Url:		https://en.opensuse.org/Gfxboot
 Source0:	%{name}-%{version}.tar.xz
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
