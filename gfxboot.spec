@@ -12,6 +12,7 @@ Patch1:		gfxboot-4.3.8-link.patch
 Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
 ExclusiveArch:	%{ix86} x86_64
 
+BuildRequires:	make
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	lynx
 BuildRequires:	nasm
