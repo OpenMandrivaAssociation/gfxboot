@@ -1,7 +1,7 @@
 Summary:	Tools to create graphical boot logos
 Name:		gfxboot
-Version:	4.5.1
-Release:	12
+Version:	4.5.103
+Release:	1
 # http://gitorious.org/gfxboot/
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -10,7 +10,7 @@ Source0:	%{name}-%{version}.tar.xz
 Patch0:		gfxboot-4.3.8-mandriva.patch
 Patch1:		gfxboot-4.3.8-link.patch
 Patch2:		gfxboot-4.5.0-fix-syslinux-path.patch
-ExclusiveArch:	%{ix86} x86_64
+ExclusiveArch:	%{ix86} %{x86_64}
 
 BuildRequires:	make
 BuildRequires:	docbook-dtd412-xml

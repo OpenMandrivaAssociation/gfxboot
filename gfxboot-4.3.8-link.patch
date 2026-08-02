@@ -1,7 +1,7 @@
---- gfxboot-4.3.8/Makefile.orig	2011-08-17 15:12:02.548478671 -0300
-+++ gfxboot-4.3.8/Makefile	2011-08-17 15:12:23.422478675 -0300
-@@ -17,7 +17,7 @@ changelog: $(GITDEPS)
- 	$(GIT2LOG) --changelog changelog
+--- gfxboot-4.5.103/Makefile
++++ gfxboot-4.5.103/Makefile
+@@ -15,7 +15,7 @@
+ all:	bin2c gfxboot-compile bincode gfxboot-font addblack
  
  gfxboot-font: gfxboot-font.c
 -	$(CC) $(CFLAGS) -I /usr/include/freetype2 -lfreetype $< -o $@
